@@ -18,3 +18,8 @@ Use the tool on the command line:
 ```
 githerer --org <NAME_OF_ORG> --pattern <PATTERN_TO_MATCH>
 ```
+
+As this queries the GitHub API, you'll need to have at least two environment variables set:
+* `GITHUB_USER`: the username to provide to the API
+* `GITHUB_TOKEN`: the token to use to access private repositories
+  * Of course, for public repos in an org, no reason to provide either, really
