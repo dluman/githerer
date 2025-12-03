@@ -1,4 +1,5 @@
 import os
+import re
 import json
 import requests
 
@@ -30,8 +31,9 @@ class Search:
             )
             repos = json.loads(request.text)
             if not repos: break
+            pattern = re.compile(pattern)
             for repo in repos:
-                if repo["name"].startswith(pattern):
+                if pattern.match(repo["name"]):
                     yield(Repo(repo["name"], repo["ssh_url"]))
             page += 1
 
