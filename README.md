@@ -5,8 +5,7 @@
 <img src="https://i.imgflip.com/adk2j6.jpg"/>
 
 A command line tool for cloning all repositories in a given GitHub organization which meet
-certain pattern matching formulae (at present, only if a repository name starts with
-a given pattern, though `regex` incoming in a future release).
+certain pattern matching regular expression-based formulae (added in `0.0.2`).
 
 ## Installation
 
