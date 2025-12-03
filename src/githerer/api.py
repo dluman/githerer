@@ -1,9 +1,12 @@
 import os
 import re
 import json
-import requests
-
 from collections import namedtuple
+
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 Repo = namedtuple('Repo', ['name', 'url'])
 
 class Search:
@@ -27,13 +30,14 @@ class Search:
             request = requests.get(
                 f"{self.GITHUB_URL}/orgs/{org}/repos",
                 headers = self.__request_headers(),
-                params = self.__request_params(page)
+                params = self.__request_params(page),
+                timeout = 5
             )
             repos = json.loads(request.text)
-            if not repos: break
+            if not repos:
+                break
             pattern = re.compile(pattern)
             for repo in repos:
                 if pattern.match(repo["name"]):
-                    yield(Repo(repo["name"], repo["ssh_url"]))
+                    yield Repo(repo["name"], repo["ssh_url"])
             page += 1
-

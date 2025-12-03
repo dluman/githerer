@@ -1,9 +1,9 @@
 import git
 
-from .api import Search
-from dotenv import load_dotenv
 from arglite import parser as cliarg
-from rich.progress import Progress, track
+from rich.progress import track
+
+from .api import Search
 
 def clone(org, pattern):
     for item in track(Search().query(org, pattern), description = "Downloading repos..."):
